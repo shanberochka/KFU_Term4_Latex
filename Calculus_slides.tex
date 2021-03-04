@@ -1,0 +1,188 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+
+\newcounter{saveenumerate}
+\newcommand{\saveenumerate}{\setcounter{saveenumerate}{\value{enumi}}}
+\newcommand{\restartenumerate}{\setcounter{enumi}{\value{saveenumerate}}}
+
+\newtheorem{ru_theo}{Теорема}
+\renewenvironment{theorem}{\begin{ru_theo}}{\end{ru_theo}}
+\newtheorem{ru_cor}{Следствие}
+\renewenvironment{corollary}{\begin{ru_cor}}{\end{ru_cor}}
+\newtheorem{ru_def}{Определение}
+\renewenvironment{definition}{\begin{ru_def}}{\end{ru_def}}
+
+\title{Математический анализ}
+\subtitle{Конспект лекций Сидорова А.М}
+\author{Фаизова Алсу}
+\institute{ИВМиИТ}
+\date[КФУ 2020] {3-й семестр 2-й курс}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Темы}
+\tableofcontents
+\end{frame}
+
+\section{Внутренние и внешние меры ранга $k$ и их свойства}
+
+\begin{frame}
+\frametitle{Внутренние и внешние меры ранга $k$ и их свойства}
+	\begin{definition} 
+	\textit{Произведением множеств} $A_1, A_2, ..., A_n$ называется множество $A_1*A_2*...*A_n = \prod_{i=1}^{n} A_i = \{(x_1, ..., x_n)|x_i \in A_i, i =\overline{1,n}\}$
+	\end{definition}
+
+	\begin{definition}
+	 Пусть дано $n \in N, k $ - целое неотрицательное число. 
+	\textit{$n$-мерным кубом ранга $k$} называется множество $Q = \prod_{i=1}^{n}[\frac{m_i}{2^k},\frac{m_i + 1}{2^k}]$, где $m_i \in Z$.
+	\end{definition}
+\end{frame}
+
+\begin{frame}
+\frametitle{Внутренние и внешние меры ранга $k$ и их свойства}
+
+	\begin{exampleblock}{Замечание:}
+	 Через $Q_n^k$ обозначим множество n-мерных кубов ранга k.
+	\begin{itemize}
+	\item Два $n$-мерных куба ранга $k$ либо не пересекаются, либо пересекаются по общей их границе, то есть не имеют общих внутренних точек. Таким образом, два $n$-мерных куба ранга $k$ имеют непересекающиеся внутренности.
+	\item Всякий $n$-мерный куб ранга $k$ состоит из $2^n$ $n$-мерных кубов ранга $k+1$.
+	\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{Внутренние и внешние меры ранга $k$ и их свойства}
+	Пусть $A \subset R^n$ -ограниченное ограниченное множество. Пусть k – целое неотрицательное число. Через $l_*(k, A)$ обозначим количество всех n-мерных кубов ранга $k$, которые содержатся во внутренности множества А. Через $l^*(k, A)$  обозначим количество всех $n$-мерных кубов ранга k, которые пересекаются с замыканием множества $A$.
+	\begin{definition}
+	\textit{Объемом} $n$-мерного куба ранга $k$ назовем число $V_k = (\frac{1}{2^k})^n = \frac{1}{2^{kn}}$
+	\end{definition} 
+
+	\begin{definition}
+	 Пусть множество $A \subset R^n$. \textit{Внутренней мерой ранга $k$ множества $A$} называется число $\mu\ _* (k, A) = l_*(k, A)*V_k$. \textit{Внешней мерой ранга $k$ множества $A$} называется число $\mu\ ^* (k, A) = l^*(k, A)*V_k.$
+	\end{definition} 
+\end{frame}
+
+\begin{frame}
+\frametitle{Внутренние и внешние меры ранга $k$ и их свойства}
+	\begin{theorem}
+	Пусть множество $A \subset R^n$ ограничено. Тогда
+	\begin{center}
+ 	$0 \leq \mu\  _* (k, A) \leq \mu\  _* (k+1, A) \leq  \mu\ ^* (k+1, A) \leq \mu\ ^* (k, A)$.
+	\end{center}
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Внутренние и внешние меры ранга $k$ и их свойства}
+	\begin{proof}
+ 	Всякий $n$-мерный куб ранга $k$ $Q \in Q_n^k$ состоит из $2^n$ $n$-мерных кубов ранга $k+1$.
+$Q_1, ..., Q_{2^n} \in Q_{n}^{k+1}$. Если $Q \subset \dot{A}$, то все $Q_i \subset \,{A}$. Если $Q \cap \overline{A} \ne \emptyset$, то хотя бы один из $Q_i$ пересекается с замыканием. Поэтому
+	\begin{center}
+	$0\leq l_*(k, A) * 2^n \leq l_*(k+1, A) \leq l^*(k+1, A) \leq l^*(k, A) *2^n. (*)$
+	\end{center}
+Ясно, что $V_{k+1} = \frac{V_k}{2^n}$. Умножим все члены равенства $(*)$ на $V_{k+1}$. Получим
+	\begin{center}
+	$0\leq l_*(k, A) * V_k \leq l_*(k+1, A) * V_{k+1} \leq l^*(k+1, A) * V_{k+1} \leq l^*(k, A) * V_k.$
+	\end{center}
+Итак, 
+	\begin{center}
+ 	$0 \leq \mu\  _* (k, A) \leq \mu\  _* (k+1, A) \leq  \mu\ ^* (k+1, A) \leq \mu\ ^* (k, A).$
+	\end{center}
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+\frametitle{Внутренние и внешние меры ранга $k$ и их свойства}
+	\begin{corollary}
+	Последовательность внутренних мер ранга $k$, то есть
+	\begin{center} 
+	$\mu\ ^* (k, A)$, является возрастающей и ограниченной сверху  $\mu\ ^* (k, A) \leq \mu\ ^*(0, A), \forall k = 0, 1, 2, ...$.
+	\end{center}
+	 Последовательность внешних мер ранга $k$ является убывающей и ограниченной снизу 
+	\begin{center}$\mu\ ^*(k, A) \geq 0, \forall k = 0, 1, 2, ...$.
+	\end{center} 
+	По теореме Вейерштрасса у этих последовательностей $\exists$  пределы. Это дает основание ввести следующее определение.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}
+\frametitle{Внутренние и внешние меры ранга $k$ и их свойства}
+	Пусть множество $A \subset R^n$ ограничено. 
+	\begin{definition}
+	\textit{Внутренней мерой множества $A$} называется число $\mu\ _*(A) = \lim_{k \to +\infty} \mu\ _*(k, A)$. \textit{Внешней мерой множества $A$} называется число $\mu\ ^*(A) = \lim_{k \to +\infty} \mu\ ^*(k, A)$.
+	\end{definition}
+\end{frame}
+
+\section{Свойства внутренних и внешних мер Жордана}
+
+\begin{frame}
+\frametitle{Свойства внутренних и внешних мер Жордана}
+	\begin{theorem}
+	Пусть множества $A, B \subset R^n$ ограничены. Тогда
+	\begin{enumerate}
+	\item $0 \leq \mu\ _*(A) \leq \mu\ ^*(A)$
+	\item Если $A \subset B$, то $\mu\ _*(A) \leq \mu\ _*(B)$ и $\mu\ ^*(A) \leq \mu\ ^*(B)$
+	\item Если $A \cap B = \emptyset$, то $\mu\ _*(A) + \mu\ _*(B) \leq \mu\ _*(A \cup B)$
+	\item $\mu\ ^*(A \cup B) \leq \mu\ ^*(A) + \mu\ ^*(B)$
+	\end{enumerate}
+	\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{Свойства внутренних и внешних мер Жордана}
+	\begin{proof}
+	\begin{enumerate}[<+->]
+	\item Ясно, что
+	\begin{center}
+	$0 \leq \mu\ _*(k, A) \leq \mu\ ^*(k, A), \forall k = 0,1,2... .$
+	\end{center}
+	Перейдём в неравенстве к пределу:
+	\begin{center}
+	$0 \leq \lim_{k \to + \infty }\mu\ _*(k, A) \leq \lim_{k \to + \infty } \mu\ ^*(k, A) \rightarrow 0 \leq \mu\ _*(A) \leq \mu\ ^*(A)$
+	\end{center}
+	\item Пусть $A \subset B$, тогда $\dot{A} \subset \dot{B}, \overline{A} \subset \overline{B}$. Поэтому 
+	\begin{center}
+	$\mu\ _*(k, A) \leq \mu\ _*(k, B)$ и $\mu\ ^*(k, A) \leq \mu\ ^*(k, B), \forall k = 0,1,2...  $.
+	\end{center}
+	 Перейдём в неравенстве к пределу:
+	\begin{center}
+	$\lim_{k \to + \infty }\mu\ _*(k, A) \leq \lim_{k \to + \infty } \mu\ _*(k, B) \rightarrow \mu\ _*(A) \leq \mu\ _*(B)$
+	$\lim_{k \to + \infty }\mu\ ^*(k, A) \leq \lim_{k \to + \infty } \mu\ ^*(k, B) \rightarrow \mu\ ^*(A) \leq \mu\ ^*(B)$
+	\end{center}
+	\saveenumerate
+	\end{enumerate}
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+\frametitle{Свойства внутренних и внешних мер Жордана}
+	\begin{proof}
+	\begin{enumerate}[<+->]
+	\restartenumerate
+	\item Пусть $A \cap B = \emptyset$. Тогда $\dot(A) \cap \dot(B) = \emptyset$. Поэтому 
+	\begin{center}
+	$\mu\ _*(k, A) + \mu\ _*(k, B) \leq \mu\ _*(k, A \cup B)$.
+	\end{center}
+	Перейдём к пределу, учтя что $\dot(A) \cup \dot(B) \subset \dot(A \cup B)$.
+	\begin{center}
+	$\lim_{k \to + \infty }\mu\ _*(k, A) + \lim_{k \to + \infty }\mu\ _*(k, B) \leq \lim_{k \to + \infty }\mu\ _*(k, A \cup B) \rightarrow \mu\ _*(A) + \mu\ _*(B) \leq \mu\ _*(A \cup B)$
+	\end{center}
+	\item Справедливо равенство $\overline{A \cup B} = \overline{A} \cup \overline{B}$. Поэтому, если $Q \in Q_n^k \cup \overline{A \cup B}$, то либо $Q \cap \overline{A} \neq \emptyset$, либо $Q \cap \overline{B} \neq \emptyset$. Значит, $\mu\ ^*(k, A \cup B) \leq \mu\ ^*(k, A) + \mu\ ^*(k, B), \forall k = 0,1,2,...$.
+	Осталось перейти к пределу.
+	\begin{center}
+	$\lim_{k \to + \infty }\mu\ _*(k, A \cup B) \leq \lim_{k \to + \infty }\mu\ _*(k, A) + \lim_{k \to + \infty }\mu\ _*(k, B) \rightarrow \mu\ _*(A \cup B) \leq \mu\ _*(A) +  \mu\ _*(B)$
+	\end{center}
+	\end{enumerate}
+	\end{proof}
+\end{frame}
+
+\end{document}
